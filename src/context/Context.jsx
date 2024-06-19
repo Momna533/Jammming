@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import Spotify from "../components/SpotifyData";
 
 const data = [
   {
@@ -34,6 +35,10 @@ const AppProvider = ({ children }) => {
   const [playlist, setPlaylist] = useState([]);
   const [playlistTitle, setPlaylistTitle] = useState("title");
 
+  useEffect(() => {
+    const token = Spotify.getAccessToken();
+    console.log("Spotify Access Token:", token);
+  }, []);
   const addToPlaylist = (id) => {
     const tempPlaylist = searchResults.find(
       (searchResult) => searchResult.id === id
@@ -53,6 +58,11 @@ const AppProvider = ({ children }) => {
   const saveToSpotify = () => {
     console.log("saved to spotify");
   };
+  const searchSpotify = (term) => {
+    Spotify.searchTracks(term).then((tracks) => {
+      setSearchResults(tracks);
+    });
+  };
   return (
     <AppContext.Provider
       value={{
@@ -61,6 +71,7 @@ const AppProvider = ({ children }) => {
         addToPlaylist,
         removeFromPlaylist,
         saveToSpotify,
+        searchSpotify,
       }}
     >
       {children}
