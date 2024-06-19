@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
-import Spotify from "../components/SpotifyData";
 
 const data = [
   {
