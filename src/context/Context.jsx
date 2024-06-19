@@ -34,10 +34,10 @@ const AppProvider = ({ children }) => {
   const [playlist, setPlaylist] = useState([]);
   const [playlistTitle, setPlaylistTitle] = useState("title");
 
-  useEffect(() => {
-    const token = Spotify.getAccessToken();
-    console.log("Spotify Access Token:", token);
-  }, []);
+  // useEffect(() => {
+  //   const token = Spotify.getAccessToken();
+  //   console.log("Spotify Access Token:", token);
+  // }, []);
   const addToPlaylist = (id) => {
     const tempPlaylist = searchResults.find(
       (searchResult) => searchResult.id === id
