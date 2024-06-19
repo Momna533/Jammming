@@ -58,11 +58,11 @@ const AppProvider = ({ children }) => {
   const saveToSpotify = () => {
     console.log("saved to spotify");
   };
-  const searchSpotify = (term) => {
-    Spotify.searchTracks(term).then((tracks) => {
-      setSearchResults(tracks);
-    });
-  };
+  // const searchSpotify = (term) => {
+  //   Spotify.searchTracks(term).then((tracks) => {
+  //     setSearchResults(tracks);
+  //   });
+  // };
   return (
     <AppContext.Provider
       value={{
@@ -71,7 +71,6 @@ const AppProvider = ({ children }) => {
         addToPlaylist,
         removeFromPlaylist,
         saveToSpotify,
-        searchSpotify,
       }}
     >
       {children}
